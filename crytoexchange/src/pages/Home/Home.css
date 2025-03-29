@@ -1,0 +1,28 @@
+.home{
+  align-items: center;
+}
+
+.hero{
+  background:linear-gradient(#0b044e, #12153f, #112834);
+  color: white;
+  text-align: center;
+  padding: 50px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.hero1{
+  color: bisque;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image_color{
+  width: 95%;
+  height: 52vh;
+}
+
+.footer{
+  color: white;
+}
