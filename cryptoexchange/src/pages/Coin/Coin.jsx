@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import CoinContext from '../../context/CoinContextDefinition';
 import Loader from '../../components/NavBar/Loader';
 import LineChart from '../../components/LineChart/LineChart';
+import { API_BASE_URL, ROUTES } from '../../utils/constants';
 
 const Coin = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Coin = () => {
 
   const fetchCoinData = useCallback(async () => {
     try {
-      const response = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`);
+      const response = await fetch(`${API_BASE_URL}/coins/${coinId}`);
       
       if (!response.ok) {
         if (response.status === 404) {
@@ -35,7 +36,7 @@ const Coin = () => {
 
   const fetchHistoricalData = useCallback(async () => {
     try {
-      const response = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=10&interval=daily`);
+      const response = await fetch(`${API_BASE_URL}/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=10&interval=daily`);
       
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
@@ -68,7 +69,7 @@ const Coin = () => {
       <div className="error-container">
         <h2>Error</h2>
         <p>{error}</p>
-        <button onClick={() => navigate('/Coin-List')}>Back to Coin List</button>
+        <button onClick={() => navigate(ROUTES.COIN_LIST)}>Back to Coin List</button>
       </div>
     );
   }
@@ -78,7 +79,7 @@ const Coin = () => {
       <div className="error-container">
         <h2>Data Unavailable</h2>
         <p>The requested cryptocurrency data could not be loaded.</p>
-        <button onClick={() => navigate('/Coin-List')}>Back to Coin List</button>
+        <button onClick={() => navigate(ROUTES.COIN_LIST)}>Back to Coin List</button>
       </div>
     );
   }

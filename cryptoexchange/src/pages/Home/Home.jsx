@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import chart from "../../assets/chart.png";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../utils/constants";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Home = () => {
             <div className="d-grid gap-2 d-md-flex justify-content-md-start">
               <button
                 type="button"
-                onClick={() => navigate("/Coin-List")}
+                onClick={() => navigate(ROUTES.COIN_LIST)}
                 className="btn btn-primary btn-lg px-4 me-md-2 home_button"
               >
                 Explore more

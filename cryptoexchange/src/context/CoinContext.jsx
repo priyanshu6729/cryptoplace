@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import PropTypes from 'prop-types';
 import CoinContext from './CoinContextDefinition';
+import { API_BASE_URL, API_KEY } from '../utils/constants';
 
 const CoinContextProvider = ({ children }) => {
   const [allCoins, setAllCoins] = useState([]);
@@ -12,27 +13,25 @@ const CoinContextProvider = ({ children }) => {
 
   const fetchAllCoins = useCallback(async () => {
     try {
-      // Get API key from environment variable, with fallback
-      const apiKey = import.meta.env.VITE_COINGECKO_API_KEY || "CG-TBWScqgUmmAXiPvBs4QdQFf5";
-
+      // Using constants for API URL and key
       const options = {
         method: "GET",
         headers: {
           accept: "application/json",
-          "x-cg-demo-api-key": apiKey,
+          "x-cg-demo-api-key": API_KEY,
         },
       };
 
       // First try with API key
       let response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`,
+        `${API_BASE_URL}/coins/markets?vs_currency=${currency.name}`,
         options
       );
 
       // If that fails, try without API key as fallback
       if (!response.ok && response.status === 401) {
         response = await fetch(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.name}`
+          `${API_BASE_URL}/coins/markets?vs_currency=${currency.name}`
         );
       }
 
