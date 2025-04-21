@@ -13,7 +13,7 @@ Tracks the current market prices of top cryptocurrency.
 - [Contact](#contact)
 
 ## Overview
-CryptoExchange is a web application that tracks the current market prices of top cryptocurrencies, providing users with real-time updates and historical data.
+CryptoPlace is a web application that tracks the current market prices of top cryptocurrencies, providing users with real-time updates and historical data.
 
 ## Technologies Used
 - **JavaScript**: 69.7%
@@ -25,8 +25,8 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/priyanshu6729/crytoexchange.git
-    cd crytoexchange
+    git clone https://github.com/priyanshu6729/crytoplace.git
+    cd cryptoexchange
     ```
 
 2. Open the project in your preferred code editor.
