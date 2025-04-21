@@ -1,0 +1,22 @@
+{
+  "name": "cryptoplace",
+  "version": "1.0.0",
+  "description": "Cryptocurrency price tracker application",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd cryptoexchange && npm run dev",
+    "build": "cd cryptoexchange && npm run build",
+    "lint": "cd cryptoexchange && npm run lint",
+    "preview": "cd cryptoexchange && npm run preview",
+    "install:app": "cd cryptoexchange && npm install",
+    "predeploy": "npm run build",
+    "deploy": "cd cryptoexchange && npx serve -s dist"
+  },
+  "keywords": [
+    "crypto",
+    "exchange",
+    "react"
+  ],
+  "author": "",
+  "license": "ISC"
+} 

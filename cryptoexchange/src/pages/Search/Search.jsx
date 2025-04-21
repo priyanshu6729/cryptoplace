@@ -5,43 +5,59 @@ import Loader from "../../components/NavBar/Loader";
 import { Link } from "react-router-dom";
 
 const Search = () => {
-  const { allCoins, currency } = useContext(CoinContext);
+  const { allCoins, currency, setCurrency, error } = useContext(CoinContext);
   const [displayCoins, setDisplayCoins] = useState([]);
   const [loadedCoins, setLoadedCoins] = useState(10);
   const [input , setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (allCoins) {
+    if (allCoins && allCoins.length > 0) {
+      setDisplayCoins(allCoins);
+      setIsLoading(false);
+    } else if (error) {
+      setIsLoading(false);
+    }
+  }, [allCoins, error]);
+
+  const handleCurrencyChange = (e) => {
+    setCurrency({
+      name: e.target.value,
+      symbol: e.target.value === "usd" ? "$" : e.target.value === "eur" ? "€" : "₹"
+    });
+  };
+
+  const loadMoreCoins = () => {
+    setLoadedCoins((prev) => prev + 10);
+  };
+
+  const inputHandler = (event) => {
+    setInput(event.target.value);
+    if(!event.target.value){
       setDisplayCoins(allCoins);
     }
-  }, [allCoins]);
+  };
 
-    const {setCurrency} = useContext(CoinContext);
-  
-    const handleCurrencyChange = (e) => {
-      setCurrency({
-        name: e.target.value,
-        symbol: e.target.value === "usd" ? "$" : e.target.value === "eur" ? "€" : "₹"
-      });
-    };
+  const searchHandler = async (event) => {
+    event.preventDefault();
+    const filteredCoins = await allCoins.filter((item) => {
+      return item.name.toLowerCase().includes(input.toLowerCase());
+    }); 
+    setDisplayCoins(filteredCoins);
+  };
 
-    const loadMoreCoins = () => {
-      setLoadedCoins((prev) => prev + 10);
-    };
-
-    const inputHandler = (event) => {
-     setInput(event.target.value);
-     if(!event.target.value){
-       setDisplayCoins(allCoins);
-    }}
-
-    const searchHandler = async (event) => {
-      event.preventDefault();
-      const filteredCoins = await allCoins.filter((item) => {
-        return item.name.toLowerCase().includes(input.toLowerCase());
-      }); 
-      setDisplayCoins(filteredCoins);
-    }
+  if (error) {
+    return (
+      <div className="coins_page">
+        <div className="search_coin">
+          <h1>Welcome to the Cryptocurrency Invent...</h1>
+          <p>
+            {error}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="coins_page">
@@ -54,8 +70,8 @@ const Search = () => {
 
         <form onSubmit={searchHandler}>
           <input
-          onChange={inputHandler}
-          value={input}
+            onChange={inputHandler}
+            value={input}
             list="crypto"
             type="text"
             placeholder="Search crypto..."
@@ -87,8 +103,10 @@ const Search = () => {
           <p className="market_cap" style={{ textAlign: "right" }}>Market Cap</p>
         </div>
 
-        {displayCoins.length === 0 ? (
-         <Loader />
+        {isLoading ? (
+          <Loader />
+        ) : displayCoins.length === 0 ? (
+          <div className="no-results">No coins found matching your search.</div>
         ) : (
           displayCoins.slice(0, loadedCoins).map((item, index) => (
             <Link to={`/coin/${item.id}`} style={{ textDecoration: "none"}} className="table-layout" key={index}>
@@ -111,12 +129,12 @@ const Search = () => {
         )}
       </div>
       <div className="load-more">
-  {loadedCoins >= displayCoins.length ? (
-    <h3>No more coins to load..</h3>
-  ) : (
-    <button onClick={loadMoreCoins}>Load More</button>
-  )}
-</div>
+        {loadedCoins >= displayCoins.length ? (
+          <h3>No more coins to load..</h3>
+        ) : (
+          <button onClick={loadMoreCoins}>Load More</button>
+        )}
+      </div>
     </div>
   ); 
 };
