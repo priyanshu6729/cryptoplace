@@ -1,51 +1,75 @@
-# CryptoPlace
+# CryptoExchange
 
-A cryptocurrency price tracker application that allows users to search and view detailed information about various cryptocurrencies.
+Tracks the current market prices of top cryptocurrency.
 
-## Features
+## Table of Contents
+- [Overview](#overview)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-- View top cryptocurrencies and their market data
-- Search for specific cryptocurrencies
-- View detailed information about each cryptocurrency
-- Interactive price charts
-- Support for multiple currencies (USD, EUR, INR)
+## Overview
+CryptoExchange is a web application that tracks the current market prices of top cryptocurrencies, providing users with real-time updates and historical data.
+
+## Technologies Used
+- **JavaScript**: 69.7%
+- **CSS**: 28.5%
+- **HTML**: 1.8%
 
 ## Installation
+To run this project locally, follow these steps:
 
-To install the dependencies, run:
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/priyanshu6729/crytoexchange.git
+    cd crytoexchange
+    ```
 
-```bash
-npm run install:app
-```
+2. Open the project in your preferred code editor.
 
-## Running the Application
+3. Open `index.html` in your browser to view the application.
 
-To start the development server, run:
+## Usage
+Provide detailed instructions on how to use the application, including screenshots or examples if possible.
 
-```bash
-npm start
-```
+1. Open the application in your browser.
+2. View the real-time prices of top cryptocurrencies.
+3. Use the search functionality to find specific cryptocurrencies.
+4. View historical data and trends for each cryptocurrency.
 
-This will start the application on [http://localhost:5173](http://localhost:5173) (or another port if 5173 is in use).
+## Features
+- Real-time cryptocurrency prices
+- Historical data and trends
+- Search functionality for specific cryptocurrencies
+- Responsive design
 
-## Building for Production
+## Contributing
+We welcome contributions! Follow these steps to contribute:
 
-To build the application for production, run:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature-name`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature-name`).
+5. Open a Pull Request.
 
-```bash
-npm run build
-```
+##ScreenShots
 
-## Project Structure
+<img width="1440" alt="Screenshot 2025-04-21 at 21 44 17 copy" src="https://github.com/user-attachments/assets/c9332943-264a-4bb4-bdcc-da115219098e" />
 
-The application is built with React and uses the following technologies:
 
-- React (v18.2.0)
-- React Router (v6.22.3)
-- Google Charts for data visualization
-- CoinGecko API for cryptocurrency data
-- Bootstrap for styling
+<img width="1439" alt="Screenshot 2025-04-21 at 21 44 32 copy" src="https://github.com/user-attachments/assets/dee2385c-1118-40a2-a9c1-7a692029724e" />
+
+
+<img width="1440" alt="Screenshot 2025-04-21 at 21 44 50 copy" src="https://github.com/user-attachments/assets/fac80d0c-cec6-470d-88ef-502107365b62" />
+
+
 
 ## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-ISC
+## Contact
+Created by [Priyanshu](https://github.com/priyanshu6729) - feel free to contact me!
