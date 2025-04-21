@@ -1,4 +1,4 @@
-# CryptoExchange
+# CryptoPlace
 
 Tracks the current market prices of top cryptocurrency.
 
